@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["esnext"],
+    "jsx": "react-jsx",
+    "lib": ["esnext", "dom"],
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
