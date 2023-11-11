@@ -44,7 +44,7 @@ async function renderPage(render: () => string, root: string, clientBundle: Roll
   htmlStr = jsBeautify.html(htmlStr)
   await fsExtra.ensureDir(join(root, 'build'))
   await fsExtra.writeFile(join(root, 'build/index.html'), htmlStr)
-  await fsExtra.remove(join(root, './temp'))
+  await fsExtra.remove(join(root, '.temp'))
 }
 
 export async function bundle(root: string) {

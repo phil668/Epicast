@@ -1,0 +1,17 @@
+{
+  "name": "basic",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "dev": "epicast dev docs",
+    "build": "epicast build docs",
+    "preview": "epicast start docs"
+  },
+  "dependencies": {
+    "epicast": "workspace:^"
+  }
+}
