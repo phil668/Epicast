@@ -11,6 +11,7 @@
     "prepublishOnly": "nr build",
     "release": "bumpp && npm publish",
     "test": "vitest",
+    "test:e2e": "playwright test",
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks"
   },
@@ -24,6 +25,7 @@
     "cac": "^6.7.14",
     "eslint": "^8.52.0",
     "esno": "^0.17.0",
+    "execa": "^8.0.1",
     "lint-staged": "^15.0.2",
     "pnpm": "^8.10.2",
     "rimraf": "^5.0.5",

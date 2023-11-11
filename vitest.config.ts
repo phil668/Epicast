@@ -5,6 +5,6 @@ export default defineConfig({
     threads: true,
     environment: 'node',
     passWithNoTests: true,
-    exclude: ['**/dist/**', '**/node_modules/**'],
+    exclude: ['**/dist/**', '**/node_modules/**', '**/e2e/**'],
   },
 })

@@ -12,6 +12,8 @@
     "preview": "epicast start docs"
   },
   "dependencies": {
-    "epicast": "workspace:^"
+    "epicast": "workspace:^",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
