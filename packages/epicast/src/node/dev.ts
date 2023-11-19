@@ -8,7 +8,7 @@ import { pluginConfig } from './plugin/config'
 export async function createDevServer(root: string, restartServer: () => Promise<void>) {
   const config = await resolveConfig(root, 'serve', 'development')
   return createServer({
-    root,
+    root: PACKAGE_ROOT,
     plugins: [pluginIndexHtml(), react(), pluginConfig(config, restartServer)],
     server: {
       fs: {

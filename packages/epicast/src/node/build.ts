@@ -7,12 +7,14 @@ import { build as viteBuild } from 'vite'
 import react from '@vitejs/plugin-react'
 import createDebug from 'debug'
 import jsBeautify from 'js-beautify'
+import type { SiteConfig } from '../../types'
 import { CLIENT_ENTRY_PATH, SERVER_ENTRY_PATH } from './constans'
+import { pluginConfig } from './plugin/config'
 
 const debug = createDebug('Epicast:build')
 
-export async function build(root: string = cwd()) {
-  const res = await bundle(root)
+export async function build(root: string = cwd(), config: SiteConfig) {
+  const res = await bundle(root, config)
   if (res) {
     // eslint-disable-next-line unused-imports/no-unused-vars
     const [clientBundle, serverBundle] = res
@@ -47,12 +49,15 @@ async function renderPage(render: () => string, root: string, clientBundle: Roll
   await fsExtra.remove(join(root, '.temp'))
 }
 
-export async function bundle(root: string) {
+export async function bundle(root: string, config: SiteConfig) {
   const resolveBuildConfig = (isServer: boolean): InlineConfig => {
     return {
       mode: 'production',
       root,
-      plugins: [react()],
+      plugins: [react(), pluginConfig(config)],
+      ssr: {
+        noExternal: ['react-router-dom'],
+      },
       build: {
         ssr: isServer,
         outDir: isServer ? '.temp' : 'build',

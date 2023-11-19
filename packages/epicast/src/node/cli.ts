@@ -1,6 +1,7 @@
 import { resolve } from 'node:path'
 import { cwd } from 'node:process'
 import { cac } from 'cac'
+import { resolveConfig } from './config'
 import { build } from './build'
 
 const cli = cac('Epicast:config')
@@ -23,9 +24,10 @@ cli.command('[root]', 'start dev server')
 cli.command('build [root]', 'build project')
   .alias('build')
   .action(async (root) => {
-    root = root ? resolve(root) : cwd()
     try {
-      await build(root)
+      root = root ? resolve(root) : cwd()
+      const config = await resolveConfig(root, 'build', 'production')
+      await build(root, config)
     }
     catch (error) {
     }
